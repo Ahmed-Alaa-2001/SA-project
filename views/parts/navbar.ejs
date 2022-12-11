@@ -1,0 +1,61 @@
+<% //console.log(isUser) %> 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <% if(isUser || isAdmin) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/view-account">View Account</a>
+                        </li>
+                    <% } %> 
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <% if(isUser) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cart">Card</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/orders">Orders</a>
+                        </li>
+                    <% } else { %> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">Signup</a>
+                        </li>
+                    <% } %>
+                    <% if(isAdmin){ %> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/add">Add Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/orders">Manage Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/block">Block Users</a>
+                        </li>
+                    <% } %> 
+                </ul>
+                <form class="d-flex" role="search" action="/product/" method="get">
+                    <input class="form-control me-2 srch" type="search" placeholder="Search" aria-label="Search" name="productName">
+                    <button class="btn btn-outline-success btn-srch" type="submit">Search</button>
+                    <!-- <button class="btn btn-outline-success btn-srch" type="submit"><a href="/product/">Search </a></button> -->
+                </form>
+                <% if(isUser){ %> 
+                    <form action="/logout" method="POST">
+                        <input type="submit" value="Logout" class="btn btn-danger">
+                    </form>
+                <% } %> 
+            </div>
+        </div>
+    </div>
+</nav>
+<br>

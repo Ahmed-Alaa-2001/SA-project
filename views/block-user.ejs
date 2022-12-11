@@ -1,0 +1,17 @@
+<%- include('parts/header')%>
+<%- include('parts/navbar')%>
+
+<div class="container text-center">
+    <h3>Block User</h3>
+    <% if(validationError) { %>
+        <p class="alert alert-danger">
+        <%= validationError.msg %>
+        </p>
+    <% } %>
+    <form action="/admin/block" method="POST">
+        <input type="text" name="blockUser" placeholder="Enter username" class="form-control">
+        <input type="submit" value="Block" class="btn btn-primary">
+    </form>
+</div>
+
+<%- include('parts/footer')%>

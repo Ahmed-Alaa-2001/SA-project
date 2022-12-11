@@ -1,0 +1,43 @@
+<%- include('parts/header')%>
+<%- include('parts/navbar')%>
+<%// console.log(product); %>
+<%// console.log(product.price); %>
+
+<div class="container">
+    <% if(!product) { %>
+    <div class="alert alert-danger">
+        there is no product matches this id
+    </div>
+    <% } else {%>
+    <div class="row">
+        <div class="col col-12 col-md-6">
+            <div class="card" style="width: 100%;">
+                <img src="/<%= product.image%>" class="card-img-top" style="max-height: 400px">
+                <div class="card-body">
+                    <form action="/cart" method="POST" class="add-to-cart-form frm">
+                        <input type="number" name="amount" class="form-control">
+                        <input type="hidden" name="name" value="<%= product.name %> ">
+                        <input type="hidden" name="price" value="<%= product.price %>">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <input type="hidden" name="redirectTo" value="/">
+                        <br>
+                        <input type="submit" value="Add to cart" class="btn btn-primary">
+                        <% if(isAdmin) { %>
+                            <br>
+                            <input type="hidden" name="productId" value="<%= product._id  %>">
+                            <input type="submit" class="btn btn-danger" value="Delete" formaction="/admin/delete">
+                        <% } %>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col col-12 col-md-6 product-detail">
+            <h3><%= product.name%></h3>
+            <h5>Price: <%= product.price%> $</h5>
+            <p><%= product.description%></p>
+        </div>
+    </div>
+    <% } %>
+</div>
+
+<%- include('parts/footer')%>

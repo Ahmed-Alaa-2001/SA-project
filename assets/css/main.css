@@ -1,0 +1,18 @@
+.frm{
+    display: flex;
+    flex-direction: column;
+}
+table,
+td {
+    border: 1px solid #000;
+    padding: 10px;
+}
+.form-control {
+    margin-bottom: 20px;
+}
+.srch{
+    margin-bottom: 0px;
+}
+.btn-srch{
+    margin-right: 100px;
+}
